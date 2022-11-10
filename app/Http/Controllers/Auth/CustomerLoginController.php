@@ -17,10 +17,10 @@ class CustomerLoginController extends Controller
             'password'=>'required',
         ]);
 
-        if(!auth()->attempt($request->only('email','password'))){
+        if(!auth()->guard('customer')->attempt($request->only('email','password'))){
             return back()->with('error' , 'Invalid username or password');
         }
 
-        return redirect()->route('dashboard');
+        return redirect()->route('customerDashboard');
     }
 }

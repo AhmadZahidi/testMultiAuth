@@ -22,6 +22,8 @@ class AdminRegisterController extends Controller
 
         $data['password']=Hash::make($data['password']);
 
+        // dd($request);
+
         Admin::create($data);
 
         return redirect()->route('adminLogin');

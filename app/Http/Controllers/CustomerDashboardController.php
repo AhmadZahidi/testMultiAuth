@@ -7,6 +7,6 @@ use Illuminate\Http\Request;
 class CustomerDashboardController extends Controller
 {
     public function index(){
-        
+        echo "success";
     }
 }

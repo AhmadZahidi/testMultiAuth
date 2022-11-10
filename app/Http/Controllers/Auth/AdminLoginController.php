@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class AdminLoginController extends Controller
 {
@@ -13,16 +14,18 @@ class AdminLoginController extends Controller
 
 
     public function store(Request $request){
-        $request->validate([
+        $data=$request->validate([
             'email'=>'required|email',
             'password'=>'required',
         ]);
 
 
     //    dd(!auth()->attempt($request->only('email','password')));
+    //    dd($request->password);
 
 
-        if(!auth()->attempt($request->only('email','password'))){
+        // if(!Auth::attempt($request->only('email','password'))){
+        if(!Auth::guard('admin')->attempt($request->only('email','password'))){
             
             return back()->with('error' , 'Invalid username or password');
 

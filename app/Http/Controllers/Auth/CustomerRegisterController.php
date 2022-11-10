@@ -24,7 +24,7 @@ class CustomerRegisterController extends Controller
 
         Customer::create($data);
 
-        return redirect()->route('login');
+        return redirect()->route('customerLogin');
 
     }
 }
